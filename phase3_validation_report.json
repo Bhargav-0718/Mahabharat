@@ -1,0 +1,45 @@
+{
+  "phase": "phase3",
+  "status": "pass",
+  "timestamp": "2025-12-31T13:16:36.709269Z",
+  "checks": [
+    {
+      "name": "files_exist",
+      "status": "pass",
+      "missing": []
+    },
+    {
+      "name": "faiss_load",
+      "status": "pass",
+      "detail": {
+        "ntotal": 8669,
+        "id_count": 8669
+      }
+    },
+    {
+      "name": "death_query_retrieval",
+      "status": "pass",
+      "detail": {
+        "retrieved_stage1": 315,
+        "reranked": 20,
+        "supported": true,
+        "citations": [
+          "P08-S073-C008",
+          "P08-S009-C002",
+          "P08-S088-C001",
+          "P08-S060-C007",
+          "P11-S025-C003",
+          "P08-S071-C002"
+        ]
+      }
+    },
+    {
+      "name": "evidence_guard",
+      "status": "pass",
+      "detail": {
+        "supported_true": true,
+        "supported_false": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "timestamp": "2025-12-31T11:48:57.142765",
+  "chunks": {
+    "file": "data\\semantic_chunks\\chunks.jsonl",
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "chunk_count": 8669,
+      "total_tokens": 4117459,
+      "min_tokens": 48,
+      "max_tokens": 800,
+      "avg_tokens": 474.9635482754643,
+      "per_parva": {
+        "Adi Parva": 801,
+        "Sabha Parva": 263,
+        "Vana Parva": 1128,
+        "Virata Parva": 224,
+        "Udyoga Parva": 667,
+        "Bhishma Parva": 570,
+        "Drona Parva": 877,
+        "Karna Parva": 457,
+        "Shalya Parva": 306,
+        "Sauptika Parva": 72,
+        "Stri Parva": 76,
+        "Shanti Parva": 1761,
+        "Anushasan Parva": 967,
+        "Ashvamedhika Parva": 314,
+        "Ashramavasika Parva": 118,
+        "Mausala Parva": 29,
+        "Mahaprasthanika Parva": 12,
+        "Svargarohanika Parva": 27
+      },
+      "below_absolute_floor": 0,
+      "below_soft_min": 7,
+      "below_preferred": 10,
+      "above_max": 0
+    }
+  },
+  "metadata": {
+    "file": "data\\semantic_chunks\\chunk_metadata.json",
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "chunk_count": 8669,
+      "model": "jinaai/jina-embeddings-v2-base-en",
+      "tokenizer": "jinaai/jina-embeddings-v2-base-en",
+      "token_limits": {
+        "target": 450,
+        "min": 120,
+        "max": 800
+      },
+      "parvas_with_chunks": 18
+    }
+  },
+  "stats": {
+    "file": "data\\semantic_chunks\\chunk_stats.json",
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "total_chunks": 8669,
+      "total_tokens": 4117459,
+      "min_tokens": 48,
+      "max_tokens": 800,
+      "avg_tokens": 474.9635482754643,
+      "per_parva": {
+        "Adi Parva": {
+          "chunks": 801,
+          "tokens": 375930
+        },
+        "Sabha Parva": {
+          "chunks": 263,
+          "tokens": 123643
+        },
+        "Vana Parva": {
+          "chunks": 1128,
+          "tokens": 527481
+        },
+        "Virata Parva": {
+          "chunks": 224,
+          "tokens": 103863
+        },
+        "Udyoga Parva": {
+          "chunks": 667,
+          "tokens": 313011
+        },
+        "Bhishma Parva": {
+          "chunks": 570,
+          "tokens": 275387
+        },
+        "Drona Parva": {
+          "chunks": 877,
+          "tokens": 421094
+        },
+        "Karna Parva": {
+          "chunks": 457,
+          "tokens": 219724
+        },
+        "Shalya Parva": {
+          "chunks": 306,
+          "tokens": 146333
+        },
+        "Sauptika Parva": {
+          "chunks": 72,
+          "tokens": 33104
+        },
+        "Stri Parva": {
+          "chunks": 76,
+          "tokens": 34686
+        },
+        "Shanti Parva": {
+          "chunks": 1761,
+          "tokens": 846160
+        },
+        "Anushasan Parva": {
+          "chunks": 967,
+          "tokens": 463861
+        },
+        "Ashvamedhika Parva": {
+          "chunks": 314,
+          "tokens": 147392
+        },
+        "Ashramavasika Parva": {
+          "chunks": 118,
+          "tokens": 54036
+        },
+        "Mausala Parva": {
+          "chunks": 29,
+          "tokens": 12779
+        },
+        "Mahaprasthanika Parva": {
+          "chunks": 12,
+          "tokens": 5093
+        },
+        "Svargarohanika Parva": {
+          "chunks": 27,
+          "tokens": 13882
+        }
+      }
+    }
+  },
+  "embeddings": {
+    "file": "data\\semantic_chunks\\embedding_manifest.json",
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "model": "jinaai/jina-embeddings-v2-base-en",
+      "dimension": 768,
+      "count": 8669,
+      "sample_dimension": 768
+    }
+  },
+  "checkpoint": {
+    "file": "data\\semantic_chunks\\parva_checkpoint.json",
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "processed_parvas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "intermediate_chunks": 8669
+    }
+  },
+  "overall_valid": true
+}

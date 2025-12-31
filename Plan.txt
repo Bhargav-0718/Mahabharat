@@ -1,0 +1,384 @@
+Perfect — now that Phase 1 and Phase 2 are **successfully stabilized**, here is the **complete, end-to-end roadmap** of the project, aligned with the **original specification mindset** you set at the beginning (SemRAG-style, retrieval-first, KG-backed, no shortcuts).
+
+I’ll structure this as:
+
+* Big-picture architecture
+* Phase-by-phase roadmap (what, why, outputs)
+* Clear “definition of done” for each phase
+* Where your project *ends up* (what you can demo / defend)
+
+---
+
+# 🌏 Project Big Picture
+
+You are building a **Retrieval-First Knowledge System** over the *Mahabharata* that supports:
+
+* Accurate question answering
+* Grounded citations
+* Conceptual reasoning (dharma, rajdharma, war ethics, lineage)
+* A query-driven Knowledge Graph (not a noisy one)
+
+This is **not**:
+
+* A naive RAG
+* A brute-force KG
+* A hallucination-prone chatbot
+
+---
+
+# 🧱 Architecture (High Level)
+
+```
+PDF
+ ↓
+Phase 1: Structural Parsing
+ ↓
+Phase 2: Semantic Chunking + Embeddings
+ ↓
+Phase 3: Retrieval & Answering
+ ↓
+Phase 3.5: Entity Candidate Harvesting
+ ↓
+Phase 4: Knowledge Graph Construction
+ ↓
+Phase 5: Hybrid RAG + KG Reasoning
+ ↓
+Phase 6: Evaluation, UI, Packaging
+```
+
+You are currently **between Phase 2 and Phase 3**.
+
+---
+
+# ✅ Phase 1 — Structural Ingestion (DONE)
+
+### What it does
+
+* Parses PDF
+* Removes TOC, index, preface
+* Extracts:
+
+  * 18 Parvas
+  * Sections
+  * Paragraphs
+
+### Why it matters
+
+* Prevents semantic leakage
+* Preserves canonical Mahabharata structure
+
+### Outputs
+
+* `mahabharata_structure.json`
+* Parva/Section correctness verified
+
+### Status
+
+✅ **Complete and correct**
+
+---
+
+# ✅ Phase 2 — Semantic Chunking & Embeddings (DONE)
+
+### What it does
+
+* Normalizes paragraphs
+* Builds **semantic chunks**
+* Embeds using long-context embedding model
+* Checkpointed, resumable
+
+### Why it matters
+
+* Retrieval quality depends more on chunking than model choice
+* Embeddings are now stable and deterministic
+
+### Outputs
+
+* `chunks.jsonl`
+* `embedding_manifest.json`
+* `chunk_stats.json`
+* `parva_checkpoint.json`
+
+### Status
+
+✅ **Complete and production-grade**
+
+---
+
+# 🔜 Phase 3 — Retrieval & Answering Layer
+
+> **This is where the system becomes useful**
+
+---
+
+## Phase 3.1 — Vector Retrieval
+
+### What you build
+
+* Vector index (FAISS / Chroma)
+* Query → top-k chunks
+* Metadata-aware filtering (Parva, Section)
+
+### Outputs
+
+* `retriever.py`
+* Retrieved chunks with scores
+
+### Done when
+
+* Queries consistently retrieve relevant passages
+* Recall > precision (we’ll rerank later)
+
+---
+
+## Phase 3.2 — Reranking (Optional but Recommended)
+
+### What you build
+
+* Cross-encoder or lightweight reranker
+* Reorder top-k chunks
+
+### Why
+
+* Improves grounding
+* Reduces irrelevant citations
+
+### Done when
+
+* Top-3 chunks answer the query without noise
+
+---
+
+## Phase 3.3 — Answer Synthesis
+
+### What you build
+
+* Prompt-driven answer generation
+* Strict citation enforcement
+
+Example output:
+
+```json
+{
+  "answer": "...",
+  "citations": ["P12-S091-C004", "P12-S092-C002"]
+}
+```
+
+### Rules
+
+* No citation → no claim
+* Multi-chunk synthesis allowed
+
+### Done when
+
+* Answers are readable
+* Citations are traceable
+
+---
+
+## Phase 3.4 — Query Logging (CRITICAL)
+
+### What you log
+
+* Query
+* Retrieved chunks
+* Used chunks
+* Final answer
+
+This data feeds **entity extraction later**.
+
+### Output
+
+* `query_log.jsonl`
+
+---
+
+# 🔶 Phase 3.5 — Entity Candidate Harvesting
+
+> ⚠️ This is **not** KG construction yet
+
+---
+
+### What happens here
+
+* Run NER + pattern rules on:
+
+  * Top-k retrieved chunks
+  * Final answers
+* Collect **entity candidates**
+
+Example:
+
+```json
+{
+  "chunk_id": "P12-S092-C004",
+  "candidates": [
+    {"text": "Bhishma", "type": "PERSON"},
+    {"text": "Rajdharma", "type": "CONCEPT"}
+  ]
+}
+```
+
+### Why now?
+
+Because now you know:
+
+* Which chunks matter
+* Which mentions are meaningful
+
+### Done when
+
+* You have a clean candidate pool
+* No KG edges yet
+
+---
+
+# 🧠 Phase 4 — Knowledge Graph Construction
+
+> **This is the heart of the project**
+
+---
+
+## Phase 4.1 — Entity Canonicalization
+
+### What you do
+
+* Alias resolution
+* Spell normalization
+* Embedding clustering
+
+Example:
+
+```
+Bhīṣma
+Grandsire Bhishma
+Son of Shantanu
+→ Bhishma
+```
+
+---
+
+## Phase 4.2 — Entity Typing
+
+### Core types
+
+* PERSON
+* DEITY
+* PLACE
+* EVENT
+* CONCEPT
+
+### Done when
+
+* Each entity has a stable ID
+* No duplicates
+
+---
+
+## Phase 4.3 — Relation Extraction
+
+Relations like:
+
+* `participated_in`
+* `advised`
+* `killed`
+* `taught`
+* `contradicted`
+* `embodies_concept`
+
+LLM suggests → rules verify.
+
+---
+
+## Phase 4.4 — Graph Assembly
+
+### Output
+
+* Neo4j / NetworkX graph
+* Node metadata:
+
+  * Source chunks
+  * Confidence score
+
+### Done when
+
+* Graph size is **manageable**
+* Every node is evidence-backed
+
+---
+
+# 🔁 Phase 5 — Hybrid RAG + KG Reasoning
+
+This is where your system becomes **research-grade**.
+
+---
+
+### Query flow
+
+```
+Query
+ ↓
+Vector retrieval
+ ↓
+KG lookup (entities, relations)
+ ↓
+Joint context
+ ↓
+Answer
+```
+
+### Capabilities
+
+* Multi-hop reasoning
+* Conceptual questions
+* “Why” and “How” questions
+
+Example:
+
+> “Why did Bhishma support Duryodhana despite knowing adharma?”
+
+---
+
+# 🧪 Phase 6 — Evaluation, UI & Packaging
+
+---
+
+## Phase 6.1 — Evaluation
+
+* Citation accuracy
+* Hallucination checks
+* KG consistency
+
+---
+
+## Phase 6.2 — UI
+
+* Streamlit / Web UI
+* Answer + citations
+* Optional KG visualization
+
+---
+
+## Phase 6.3 — Final Deliverables
+
+You end with:
+
+* A full pipeline repo
+* A demonstrable system
+* A defensible design story
+
+---
+
+# 🎯 Final Outcome (What You’ve Built)
+
+By the end, you will have:
+
+* A **Semantically grounded RAG**
+* A **query-driven Knowledge Graph**
+* A system that **earns trust**
+* A project that is:
+
+  * Intern-ready
+  * Research-ready
+  * Interview-ready
