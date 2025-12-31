@@ -130,7 +130,7 @@ def run_pipeline(
     force: bool,
     similarity_threshold: float,
 ) -> None:
-    log_level = logging.DEBUG if verbose else logging.INFO
+    log_level = logging.DEBUG if verbose else logging.WARNING
     logging.basicConfig(level=log_level, format="%(asctime)s - %(levelname)s - %(message)s")
 
     input_path = Path(input_file)
@@ -162,8 +162,6 @@ def run_pipeline(
     safe_min = 120
     safe_target = 450
 
-    logger.info(f"Token limits: min={safe_min}, target={safe_target}, max={safe_max} (model supports up to {tokenizer_max})")
-
     chunker = SemanticChunker(
         tokenizer=tokenizer,
         embedder=embedder,
@@ -175,7 +173,6 @@ def run_pipeline(
 
     logger.info("Loading structure and chunking...")
     parvas = load_structure(str(input_path))
-    logger.info(f"Processing {len(parvas)} Parvas...")
     
     parva_checkpoint_path = output_path / "parva_checkpoint.json"
     parva_checkpoint = load_parva_checkpoint(parva_checkpoint_path)
@@ -185,26 +182,20 @@ def run_pipeline(
     for parva in tqdm(parvas, desc="Chunking Parvas", unit="parva"):
         parva_num = parva.get("parva_number")
         if parva_num in processed_parva_numbers:
-            logger.info(f"Skipping Parva {parva_num} (already processed)")
             continue
-        logger.info(f"Processing Parva {parva_num}: {parva.get('parva_name')}")
         parva_chunks = chunker._chunk_parva(parva)
         intermediate_chunks.extend(parva_chunks)
         processed_parva_numbers.add(parva_num)
         parva_checkpoint["processed_parvas"] = sorted(list(processed_parva_numbers))
         parva_checkpoint["intermediate_chunks"] = intermediate_chunks
         save_parva_checkpoint(parva_checkpoint_path, parva_checkpoint)
-        logger.info(f"Saved checkpoint: {len(intermediate_chunks)} total chunks so far")
     
     chunks = intermediate_chunks
 
     ChunkValidator.validate_chunks(chunks, min_tokens=120, max_tokens=800)
     ChunkValidator.log_stats(chunks)
 
-    logger.info(f"Starting embedding generation for {len(chunks)} chunks...")
-
     texts = [c["text"] for c in chunks]
-    logger.info(f"Embedding {len(texts)} chunks...")
     embeddings_np = embedder.embed_texts(texts)
     ChunkValidator.validate_embeddings(chunks, embeddings_np)
 
@@ -224,15 +215,10 @@ def run_pipeline(
         logger.info("Dry run enabled; outputs will not be written")
         return
 
-    logger.info("Writing outputs to %s", output_path)
     write_jsonl(output_path / "chunks.jsonl", chunks)
-    logger.info(f"Wrote chunks.jsonl")
     write_json(output_path / "chunk_metadata.json", metadata)
-    logger.info(f"Wrote chunk_metadata.json")
     write_json(output_path / "chunk_stats.json", stats)
-    logger.info(f"Wrote chunk_stats.json")
     write_json(output_path / "embedding_manifest.json", manifest)
-    logger.info(f"Wrote embedding_manifest.json")
 
     checkpoint = {
         "input_hash": input_hash,

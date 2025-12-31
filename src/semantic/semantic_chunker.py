@@ -42,7 +42,7 @@ class SemanticChunker:
 
     def chunk_parvas(self, parvas: List[Dict]) -> List[Dict]:
         chunks: List[Dict] = []
-        for parva in tqdm(parvas, desc="Chunking Parvas", unit="parva"):
+        for parva in parvas:
             chunks.extend(self._chunk_parva(parva))
         return chunks
 
@@ -52,7 +52,7 @@ class SemanticChunker:
         sections = parva.get("sections", [])
         parva_chunks: List[Dict] = []
 
-        for section_idx, section in enumerate(tqdm(sections, desc=f"  {parva_name}", leave=False, unit="section"), start=1):
+        for section_idx, section in enumerate(sections, start=1):
             section_number = section.get("section_number")
             paragraphs = section.get("paragraphs", [])
             normalized = ParagraphNormalizer.normalize_paragraphs(paragraphs)
@@ -84,7 +84,7 @@ class SemanticChunker:
         prev_emb: np.ndarray = None
 
         expanded_paras: List[str] = []
-        for para in tqdm(paragraphs, desc="  Normalizing", leave=False, unit="para"):
+        for para in paragraphs:
             tokens = self._token_count(para)
             if tokens > self.max_tokens:
                 expanded_paras.extend(self._split_long_paragraph(para))
@@ -187,12 +187,18 @@ class SemanticChunker:
             merged.append(chunk)
             i += 1
 
-        # Final check to ensure min_tokens constraint (warn but allow if unmerge-able)
+        # Soft minimum enforcement - only fail on extremely small chunks
+        absolute_floor = 40
         for chunk in merged:
-            if chunk["token_count"] < self.min_tokens:
-                logger.warning(
+            if chunk["token_count"] < absolute_floor:
+                raise ValueError(
                     f"Chunk {chunk.get('chunk_id', 'unknown')} has {chunk['token_count']} tokens, "
-                    f"below minimum {self.min_tokens} (could not merge without exceeding max)"
+                    f"below absolute floor of {absolute_floor}"
+                )
+            elif chunk["token_count"] < self.min_tokens:
+                logger.debug(
+                    f"Chunk {chunk.get('chunk_id', 'unknown')} has {chunk['token_count']} tokens, "
+                    f"below preferred minimum {self.min_tokens} (accepted as unmergeable)"
                 )
 
         # Renumber chunk indices and ids deterministically after merges
