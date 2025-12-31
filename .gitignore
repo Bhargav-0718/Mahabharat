@@ -38,6 +38,8 @@ Thumbs.db
 # ============================
 # Data (Large / Generated)
 # ============================
+data/
+data/semantic_chunks/
 data/raw_pdf/
 data/parsed_text/
 data/context_units/
