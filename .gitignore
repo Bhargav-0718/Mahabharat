@@ -1,0 +1,88 @@
+# ============================
+# Python Virtual Environment
+# ============================
+.venv/
+venv/
+ENV/
+env/
+
+# ============================
+# Python Bytecode & Cache
+# ============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ============================
+# Environment Variables
+# ============================
+.env
+.env.*
+!.env.example
+
+# ============================
+# Logs
+# ============================
+*.log
+logs/
+
+# ============================
+# OS / Editor Files
+# ============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ============================
+# Data (Large / Generated)
+# ============================
+data/raw_pdf/
+data/parsed_text/
+data/context_units/
+data/embeddings/
+data/vector_store/
+
+# ============================
+# FAISS / Vector Indexes
+# ============================
+*.faiss
+*.index
+
+# ============================
+# Jupyter / Notebooks
+# ============================
+.ipynb_checkpoints/
+
+# ============================
+# Test / Coverage
+# ============================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ============================
+# Build / Distribution
+# ============================
+build/
+dist/
+*.egg-info/
+
+# ============================
+# Streamlit
+# ============================
+.streamlit/secrets.toml
+
+# ============================
+# Temporary Files
+# ============================
+tmp/
+*.tmp
+*.bak
+
+# ============================
+# Mac / Linux / Windows Noise
+# ============================
+*.lock
+phase1_ingestion.log

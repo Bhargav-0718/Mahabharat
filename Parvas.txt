@@ -1,0 +1,80 @@
+
+[Stage 2/2] SECTION EXTRACTION
+2025-12-31 11:26:53,804 - __main__ - INFO - ----------------------------------------------------------------------
+2025-12-31 11:26:53,804 - __main__ - INFO - Extracting Parva boundaries...
+2025-12-31 11:26:53,805 - __main__ - INFO - Section extractor initialized
+2025-12-31 11:26:53,806 - __main__ - INFO - Building hierarchical structure...
+2025-12-31 11:26:53,806 - section_extractor - INFO - Frontmatter cutoff: first BOOK header on page 51; discarding pages 1-50
+2025-12-31 11:26:54,062 - section_extractor - INFO - Combined 5818 pages into single text
+2025-12-31 11:26:54,198 - section_extractor - INFO - Extracted BOOK 1: Adi Parva with 236 sections
+2025-12-31 11:26:54,207 - section_extractor - INFO - Extracted BOOK 2: Sabha Parva with 79 sections
+2025-12-31 11:26:54,250 - section_extractor - INFO - Extracted BOOK 3: Vana Parva with 313 sections
+2025-12-31 11:26:54,259 - section_extractor - INFO - Extracted BOOK 4: Virata Parva with 71 sections
+2025-12-31 11:26:54,284 - section_extractor - INFO - Extracted BOOK 5: Udyoga Parva with 199 sections
+2025-12-31 11:26:54,308 - section_extractor - INFO - Extracted BOOK 6: Bhishma Parva with 124 sections
+2025-12-31 11:26:54,345 - section_extractor - INFO - Extracted BOOK 7: Drona Parva with 198 sections
+2025-12-31 11:26:54,365 - section_extractor - INFO - Extracted BOOK 8: Karna Parva with 95 sections
+2025-12-31 11:26:54,379 - section_extractor - INFO - Extracted BOOK 9: Shalya Parva with 65 sections
+2025-12-31 11:26:54,383 - section_extractor - INFO - Extracted BOOK 10: Sauptika Parva with 18 sections
+2025-12-31 11:26:54,388 - section_extractor - INFO - Extracted BOOK 11: Stri Parva with 27 sections
+2025-12-31 11:26:54,465 - section_extractor - INFO - Extracted BOOK 12: Shanti Parva with 364 sections
+2025-12-31 11:26:54,505 - section_extractor - INFO - Extracted BOOK 13: Anushasan Parva with 167 sections
+2025-12-31 11:26:54,518 - section_extractor - INFO - Extracted BOOK 14: Ashvamedhika Parva with 91 sections
+2025-12-31 11:26:54,523 - section_extractor - INFO - Extracted BOOK 15: Ashramavasika Parva with 39 sections
+2025-12-31 11:26:54,525 - section_extractor - INFO - Extracted BOOK 16: Mausala Parva with 8 sections
+2025-12-31 11:26:54,525 - section_extractor - INFO - Extracted BOOK 17: Mahaprasthanika Parva with 3 sections
+2025-12-31 11:26:54,528 - section_extractor - INFO - Extracted BOOK 18: Svargarohanika Parva with 6 sections
+2025-12-31 11:26:54,528 - section_extractor - INFO - Extracted 18 Parvas from combined text  
+2025-12-31 11:26:54,531 - __main__ - INFO - Extracted 18 Parvas
+2025-12-31 11:26:54,532 - __main__ - INFO -   - Adi Parva: 236 sections
+2025-12-31 11:26:54,532 - __main__ - INFO -   - Sabha Parva: 79 sections
+2025-12-31 11:26:54,532 - __main__ - INFO -   - Vana Parva: 313 sections
+2025-12-31 11:26:54,533 - __main__ - INFO -   - Virata Parva: 71 sections
+2025-12-31 11:26:54,533 - __main__ - INFO -   - Udyoga Parva: 199 sections
+2025-12-31 11:26:54,533 - __main__ - INFO -   - Bhishma Parva: 124 sections
+2025-12-31 11:26:54,533 - __main__ - INFO -   - Drona Parva: 198 sections
+2025-12-31 11:26:54,533 - __main__ - INFO -   - Karna Parva: 95 sections
+2025-12-31 11:26:54,533 - __main__ - INFO -   - Shalya Parva: 65 sections
+2025-12-31 11:26:54,534 - __main__ - INFO -   - Sauptika Parva: 18 sections
+2025-12-31 11:26:54,534 - __main__ - INFO -   - Stri Parva: 27 sections
+2025-12-31 11:26:54,534 - __main__ - INFO -   - Shanti Parva: 364 sections
+2025-12-31 11:26:54,534 - __main__ - INFO -   - Anushasan Parva: 167 sections
+2025-12-31 11:26:54,534 - __main__ - INFO -   - Ashvamedhika Parva: 91 sections
+2025-12-31 11:26:54,534 - __main__ - INFO -   - Ashramavasika Parva: 39 sections
+2025-12-31 11:26:54,535 - __main__ - INFO -   - Mausala Parva: 8 sections
+2025-12-31 11:26:54,535 - __main__ - INFO -   - Mahaprasthanika Parva: 3 sections
+2025-12-31 11:26:54,535 - __main__ - INFO -   - Svargarohanika Parva: 6 sections
+2025-12-31 11:26:54,535 - __main__ - INFO - Saving structured document...
+2025-12-31 11:26:54,680 - section_extractor - INFO - Saved structured document to data\parsed_text\mahabharata_structure.json
+2025-12-31 11:26:54,680 - __main__ - INFO - Saved to data\parsed_text\mahabharata_structure.json
+2025-12-31 11:26:55,290 - __main__ - INFO - Saved checkpoint to data\parsed_text\phase1_checkpoint.json
+2025-12-31 11:26:55,290 - __main__ - INFO - 
+======================================================================
+2025-12-31 11:26:55,290 - __main__ - INFO - PHASE 1 INGESTION PIPELINE - COMPLETE
+2025-12-31 11:26:55,291 - __main__ - INFO - ======================================================================
+2025-12-31 11:26:55,291 - __main__ - INFO -
+Output Summary:
+2025-12-31 11:26:55,291 - __main__ - INFO -   - Parsed Pages: 5818 pages
+2025-12-31 11:26:55,291 - __main__ - INFO -     -> data\parsed_text\parsed_pages.jsonl       
+2025-12-31 11:26:55,292 - __main__ - INFO -   - Structured Document: 18 Parvas
+2025-12-31 11:26:55,292 - __main__ - INFO -     -> data\parsed_text\mahabharata_structure.json
+
+======================================================================
+PHASE 1 RESULTS
+======================================================================
+{
+  "stage": "Phase 1 - PDF Parsing & Structural Extraction",
+  "status": "complete",
+  "outputs": {
+    "parsed_pages": {
+      "file": "data\\parsed_text\\parsed_pages.jsonl",
+      "page_count": 5818
+    },
+    "structured_document": {
+      "file": "data\\parsed_text\\mahabharata_structure.json",
+      "parva_count": 18
+    }
+  },
+  "resumed": true
+}
+PS D:\AI\Mahabharat> 

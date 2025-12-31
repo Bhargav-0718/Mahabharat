@@ -1,0 +1,149 @@
+# Story Phases Taxonomy for Mahabharata SemRAG
+# Frozen configuration for temporal reasoning and phase-based filtering
+
+story_phases:
+  
+  Origins:
+    description: "Creation, dynasties, and early history before Pandavas rise"
+    parvas: [1]  # Adi Parva
+    sub_phases: []
+    
+  RiseOfThePandavas:
+    description: "Youth, marriage, court life, and political ascent"
+    parvas: [2, 3]  # Sabha Parva, Vana Parva (partial)
+    sub_phases:
+      - Youth
+      - Swayamvara
+      - CourtLife
+      - DiceGame
+    
+  Exile:
+    description: "13-year exile period after the Dice Game"
+    parvas: [3, 4]  # Vana Parva, Virata Parva
+    sub_phases:
+      - DiceGame:
+          description: "The fateful Dice Game and decision"
+          parvas: [2, 3]
+      - ForestYears:
+          description: "First 12 years in the forest"
+          parvas: [3]
+      - Year13:
+          description: "13th year of concealment"
+          parvas: [4]
+          sub_phases:
+            - Agyatvasa:
+                description: "Year 13 in Virata's kingdom in disguise"
+                parvas: [4]
+    
+  PreludeToWar:
+    description: "Negotiation, failed peace attempts, army mobilization"
+    parvas: [5, 6]  # Udyoga Parva, Bhishma Parva (opening)
+    sub_phases:
+      - DiplomaticMissions
+      - ArmyMobilization
+      - CourierExchanges
+    
+  KurukshetraWar:
+    description: "The 18-day war at Kurukshetra"
+    parvas: [6, 7, 8, 9, 10]  # Bhishma, Drona, Karna, Shalya, Sauptika Parvas
+    sub_phases:
+      - Day01_10:
+          description: "Days 1-10: Bhishma's command"
+          parvas: [6]
+      - Day11_15:
+          description: "Days 11-15: Drona's command"
+          parvas: [7]
+      - Day16_18:
+          description: "Days 16-18: Karna's command, final battles"
+          parvas: [8, 9]
+      - NightRaid:
+          description: "Ashvatthama's night raid"
+          parvas: [10]
+    
+  ImmediateAftermath:
+    description: "Aftermath of war, mourning, recovery"
+    parvas: [10, 11]  # Sauptika, Stri Parva
+    sub_phases:
+      - FirstDawn
+      - MourningOfWomen
+      - CountingTheDeaths
+    
+  PostWarInstruction:
+    description: "Teachings on duty, governance, and dharma"
+    parvas: [12, 13]  # Shanti Parva, Anushasan Parva
+    sub_phases:
+      - Rajadharma:
+          description: "Royal duties and governance"
+          parvas: [12]
+      - Mokshadharma:
+          description: "Path to liberation and ultimate truths"
+          parvas: [13]
+      - Apaddharma:
+          description: "Conduct during calamity"
+          parvas: [13]
+    
+  WithdrawalFromTheWorld:
+    description: "Final years, succession, renunciation, death"
+    parvas: [14, 15, 16, 17, 18]  # Ashvamedhika, Ashramavasika, Mausala, Mahaprasthanika, Svargarohanika
+    sub_phases:
+      - Ashvamedha:
+          description: "The horse sacrifice and its consequences"
+          parvas: [14]
+      - Ashramavasika:
+          description: "Renunciation and forest dwelling"
+          parvas: [15]
+      - Departure:
+          description: "Journey towards heaven"
+          parvas: [16, 17, 18]
+
+# Parva Mapping (18 Parvas)
+parvas:
+  1: "Adi Parva"
+  2: "Sabha Parva"
+  3: "Vana Parva"
+  4: "Virata Parva"
+  5: "Udyoga Parva"
+  6: "Bhishma Parva"
+  7: "Drona Parva"
+  8: "Karna Parva"
+  9: "Shalya Parva"
+  10: "Sauptika Parva"
+  11: "Stri Parva"
+  12: "Shanti Parva"
+  13: "Anushasan Parva"
+  14: "Ashvamedhika Parva"
+  15: "Ashramavasika Parva"
+  16: "Mausala Parva"
+  17: "Mahaprasthanika Parva"
+  18: "Svargarohanika Parva"
+
+# Character Aliases (Examples - to be expanded during ingestion)
+character_aliases:
+  Arjuna:
+    - Partha
+    - Dhananjaya
+    - Jishnu
+    - Savyasachi
+    - Pandu's Third Son
+    - Brihannala  # During Agyatvasa disguise
+  
+  Yudhishthira:
+    - Dharmaraja
+    - Kunti's Eldest
+    - Kanka  # During Agyatvasa disguise
+  
+  Bhima:
+    - Bhimasena
+    - Vrikodara
+    - Ballava  # During Agyatvasa disguise
+  
+  Draupadi:
+    - Krishnaa
+    - Panchali
+    - Sairindhri  # During Agyatvasa disguise
+  
+  Krishna:
+    - Vasudeva
+    - Hari
+    - Govinda
+    - Madhava

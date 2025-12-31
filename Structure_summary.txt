@@ -1,0 +1,20 @@
+Total Parvas: 18
+
+ 1. Adi Parva                      | Sections: 236 | Paragraphs: 9714
+ 2. Sabha Parva                    | Sections:  79 | Paragraphs: 3101
+ 3. Vana Parva                     | Sections: 313 | Paragraphs: 13608
+ 4. Virata Parva                   | Sections:  71 | Paragraphs: 2604
+ 5. Udyoga Parva                   | Sections: 199 | Paragraphs: 8153
+ 6. Bhishma Parva                  | Sections: 124 | Paragraphs: 6771
+ 7. Drona Parva                    | Sections: 198 | Paragraphs: 10838
+ 8. Karna Parva                    | Sections:  95 | Paragraphs: 5725
+ 9. Shalya Parva                   | Sections:  65 | Paragraphs: 4220
+10. Sauptika Parva                 | Sections:  18 | Paragraphs: 1030
+11. Stri Parva                     | Sections:  27 | Paragraphs: 1047
+12. Shanti Parva                   | Sections: 364 | Paragraphs: 24000
+13. Anushasan Parva                | Sections: 167 | Paragraphs: 13228
+14. Ashvamedhika Parva             | Sections:  91 | Paragraphs: 4184
+15. Ashramavasika Parva            | Sections:  39 | Paragraphs: 1590
+16. Mausala Parva                  | Sections:   8 | Paragraphs:  373
+17. Mahaprasthanika Parva          | Sections:   3 | Paragraphs:  155
+18. Svargarohanika Parva           | Sections:   6 | Paragraphs:  392

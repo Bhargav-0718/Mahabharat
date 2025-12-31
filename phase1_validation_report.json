@@ -1,0 +1,71 @@
+{
+  "timestamp": "2025-12-31T06:05:28.798606",
+  "parsed_pages": {
+    "file": "data/parsed_text/parsed_pages.jsonl",
+    "valid": true,
+    "page_count": 5818,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "total_pages": 5818,
+      "total_words": 2703759,
+      "total_characters": 16559463,
+      "avg_words_per_page": 464,
+      "pages_with_section_marker": 5812,
+      "pages_with_parva_marker": 5817
+    }
+  },
+  "structure": {
+    "file": "data/parsed_text/mahabharata_structure.json",
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "statistics": {
+      "parva_count": 18,
+      "total_sections": 2103,
+      "total_paragraphs": 110733,
+      "parva_names": [
+        "Adi Parva",
+        "Sabha Parva",
+        "Vana Parva",
+        "Virata Parva",
+        "Udyoga Parva",
+        "Bhishma Parva",
+        "Drona Parva",
+        "Karna Parva",
+        "Shalya Parva",
+        "Sauptika Parva",
+        "Stri Parva",
+        "Shanti Parva",
+        "Anushasan Parva",
+        "Ashvamedhika Parva",
+        "Ashramavasika Parva",
+        "Mausala Parva",
+        "Mahaprasthanika Parva",
+        "Svargarohanika Parva"
+      ],
+      "sections_per_parva": {
+        "Adi Parva": 236,
+        "Sabha Parva": 79,
+        "Vana Parva": 313,
+        "Virata Parva": 71,
+        "Udyoga Parva": 199,
+        "Bhishma Parva": 124,
+        "Drona Parva": 198,
+        "Karna Parva": 95,
+        "Shalya Parva": 65,
+        "Sauptika Parva": 18,
+        "Stri Parva": 27,
+        "Shanti Parva": 364,
+        "Anushasan Parva": 167,
+        "Ashvamedhika Parva": 91,
+        "Ashramavasika Parva": 39,
+        "Mausala Parva": 8,
+        "Mahaprasthanika Parva": 3,
+        "Svargarohanika Parva": 6
+      },
+      "empty_sections": 0
+    }
+  },
+  "overall_valid": true
+}
